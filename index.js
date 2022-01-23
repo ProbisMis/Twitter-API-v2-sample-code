@@ -1,13 +1,14 @@
 //import { getRequest } from './Tweet-Lookup/get_tweets_with_bearer_token.js';
 import { getRequest } from './Recent-Search/recent_search.js';
-import NodeCache  from 'node-cache';
 import fs from 'fs';
 
 
 //Retrieve highest id searched last time OK
 //Search for the tweets OK
 //Validate list OK 
-
+getRecentTweets(async function(data) {
+    console.log(data);
+});
 //Find the parent tweet 
 
 //Comment on parent tweet 
