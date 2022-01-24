@@ -10,7 +10,7 @@ Dotenv.config();
 // The code below sets the bearer token from your environment variables
 // To set environment variables on macOS or Linux, run the export command below from the terminal:
 // export BEARER_TOKEN='YOUR-TOKEN'
-const token = process.env.TWITTER_ACCESS_TOKEN;
+const token = process.env.TWITTER_ACCESS_TOKEN; 
 const endpointURL = "https://api.twitter.com/2/tweets?ids=";
 
 export async function getRequest() {

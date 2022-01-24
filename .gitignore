@@ -17,6 +17,7 @@ yarn.lock
 ../node_modules/
 ../package.json
 ../yarn.lock
+.env
 
 # Used by dotenv library to load environment variables.
 # .env
