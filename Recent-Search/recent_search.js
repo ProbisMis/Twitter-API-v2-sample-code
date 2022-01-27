@@ -13,7 +13,7 @@ const endpointUrl = "https://api.twitter.com/2/tweets/search/recent";
 export async function getRequest(highestTweetId) {
 
     const params = {
-        'query': '#MyTestRun', //#NFTcommunity OR #NFTdrop OR #apeNft
+        'query': '#NFTcommunity OR #NFTdrop OR #apeNft', //#NFTcommunity OR #NFTdrop OR #apeNft
         'since_id' : highestTweetId,
         'max_results': 15,
         'tweet.fields': 'author_id,conversation_id,created_at,geo,id,lang,source,text'

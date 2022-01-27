@@ -24,7 +24,7 @@ function getRecentTweets(cb)
             console.log("IN")
             const num = Number(response.meta.newest_id);
             if (Number.isInteger(num))
-            {   h
+            {   
                 console.log("NUM YES")
                 writeToFile(response.meta.newest_id);
                 cb(response);
