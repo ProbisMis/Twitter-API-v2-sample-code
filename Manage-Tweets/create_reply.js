@@ -12,8 +12,9 @@ const T = new Twit({
   
 export async function replyToTweet(replyToId, replyToUsername) {
   const tweet = () => {
-    const text = "Hey, check this I think you will like it 🥂 \n https://twitter.com/teenageapenc/status/1480662210254938120?s=21";
-  
+    const text = "@" + replyToUsername +  "\n Hey, check this I think you will like it 🥂 \n https://twitter.com/teenageapenc/status/1480662210254938120?s=21";  
+    if (replyToId == undefined)
+      return;
     const onFinish = (err, reply) => {
       if (err) {
         console.log("Error: ", err.message);
@@ -22,7 +23,7 @@ export async function replyToTweet(replyToId, replyToUsername) {
       }
     };
   
-    T.post("statuses/update", { status: text, in_reply_to_status_id: replyToId, username: replyToUsername}, onFinish);
+    T.post("statuses/update", { status:text,in_reply_to_status_id:replyToId,username:replyToUsername}, onFinish);
   };
   
   tweet();

@@ -6,26 +6,38 @@ import fs from 'fs';
 
 
 getRecentTweets(async function(response) {
-    response.data.forEach(function(value){
-        const username = getUser(value.author_id);
-        replyToTweet(value.conversation_id, username);
-        console.log(value);
+    response.data.forEach(async function(value){
+        const userResponse = await getUser(value.author_id);
+        //console.log("User is: \n" + userResponse.data.toString());
+        if (value.text.startsWith("RT"))
+        {
+            console.log("Begins with RT Skipping");
+            return;
+        }       
+      
+        if (value.conversation_id != value.id)
+        {
+            console.log("This is a reply skipping");
+            return;
+        }
+
+        await replyToTweet(value.id, userResponse.data.username);
+            
+        
     });
 });
 
 function getRecentTweets(cb)
 {
     getHighestTweetId(async function(data) {
-        console.log(data);
+
         const response = await getRequest(data);
-        console.log(response);
+
         if (response  != undefined && response.meta != undefined && response.meta.newest_id != undefined)
-        {   
-            console.log("IN")
+        {  
             const num = Number(response.meta.newest_id);
             if (Number.isInteger(num))
             {   
-                console.log("NUM YES")
                 writeToFile(response.meta.newest_id);
                 cb(response);
             }
@@ -48,7 +60,6 @@ function writeToFile(highestTweetId)
 {
     fs.writeFile('helloworld.txt', highestTweetId, function (err) {
         if (err) return console.log(err);
-        console.log('Hello World > helloworld.txt');
       });
 }
 

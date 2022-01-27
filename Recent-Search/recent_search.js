@@ -15,8 +15,8 @@ export async function getRequest(highestTweetId) {
     const params = {
         'query': '#NFTcommunity OR #NFTdrop OR #apeNft', //#NFTcommunity OR #NFTdrop OR #apeNft
         'since_id' : highestTweetId,
-        'max_results': 15,
-        'tweet.fields': 'author_id,conversation_id,created_at,geo,id,lang,source,text'
+        'max_results': 30,
+        'tweet.fields': 'author_id,conversation_id,text,in_reply_to_user_id'
     }
 
     const res = await Needle('get', endpointUrl, params, {
